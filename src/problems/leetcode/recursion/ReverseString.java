@@ -1,4 +1,4 @@
-package com.company;
+package problems.leetcode.recursion;
 
 public class ReverseString {
     public void reverseString(char[] s) {

@@ -1,4 +1,4 @@
-package com.company;
+package problems.leetcode.recursion;
 
 public class ListNode {
     int val;

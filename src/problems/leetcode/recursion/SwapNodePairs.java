@@ -1,6 +1,6 @@
-package com.company;
+package problems.leetcode.recursion;
 
-import java.util.List;
+import problems.leetcode.recursion.ListNode;
 
 public class SwapNodePairs {
 
