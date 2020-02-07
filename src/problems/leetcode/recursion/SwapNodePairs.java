@@ -5,6 +5,9 @@ import problems.leetcode.recursion.ListNode;
 public class SwapNodePairs {
 
     public ListNode swapPairs(ListNode head) {
+        if(head == null || head.next == null) {
+            return head;
+        }
         return swap(head, head.next, null);
     }
 
@@ -16,7 +19,7 @@ public class SwapNodePairs {
         }
         nextNode.next = node;
         node.next = temp;
-        if(node.next != null) {
+        if(temp != null && temp.next != null) {
             swap(temp, temp.next, node);
         }
         return head;
@@ -30,6 +33,7 @@ public class SwapNodePairs {
         System.out.println(listNode.val);
     }
 
+    // Less number of checks compared to my solution - more intuitive
     public ListNode swapPairsLeetCode(ListNode head) {
 
         // If the list has no node or has only one node left.
