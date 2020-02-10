@@ -30,7 +30,7 @@ public class MergeLists {
             prev = prev.next;
         }
         prev.next = l1 == null ? l2 : l1;
-        return null;
+        return preHead.next;
     }
 
 }
