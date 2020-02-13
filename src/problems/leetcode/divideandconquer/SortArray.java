@@ -1,26 +1,77 @@
 package problems.leetcode.divideandconquer;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class SortArray {
-    public int[] sortArray(int[] nums) {
-        if(nums == null) {
+    public List<Integer> sortArray(int[] nums) {
+        int[] temp = new int[nums.length];
+        int left, middle, right;
+        for (int step = 2; step < nums.length; step *= 2) {
+            for (int i = 0; i < nums.length; i += 2 * step) {
+                if(i + step < nums.length) {
+                    left = i;
+                    middle = i + step;
+                    right = i + step * 2;
+                    merge(nums, left, middle, right, temp);
+                }
+            }
+            for (int i = 0; i < nums.length; i++) {
+                nums[i] = temp[i];
+            }
+        }
+        List<Integer> result = new ArrayList<>(nums.length);
+        for (int i : nums) {
+            result.add(i);
+        }
+        return result;
+    }
+
+    private void merge(int[] nums, int left, int middle, int right, int[] temp) {
+        int i = left;
+        int j = middle;
+        int k = left;
+
+        middle = Math.min(middle, nums.length);
+        right = Math.min(right, nums.length);
+
+        while (i < middle || j < right) {
+            if (i < middle && j < right) {
+                if (nums[i] < nums[j]) {
+                    temp[k++] = nums[i++];
+                } else {
+                    temp[k++] = nums[j++];
+                }
+            } else if (i == middle) {
+                temp[k++] = nums[j++];
+            } else if (j == right) {
+                temp[k++] = nums[i++];
+            }
+        }
+        while (k < nums.length) {
+            temp[k] = nums[k];
+            k++;
+        }
+    }
+
+    public int[] sortArrayRecursiveDiv(int[] nums) {
+        if (nums == null) {
             return nums;
         }
 
-        if(nums.length > 1) {
+        if (nums.length > 1) {
             int mid = nums.length / 2;
 
             // Split left part
             int[] left = new int[mid];
-            for(int i = 0; i < mid; i++) {
+            for (int i = 0; i < mid; i++) {
                 left[i] = nums[i];
             }
 
             // Split right part
             int[] right = new int[nums.length - mid];
-            for(int i = mid; i < nums.length; i++) {
+            for (int i = mid; i < nums.length; i++) {
                 right[i - mid] = nums[i];
             }
 
@@ -32,8 +83,8 @@ public class SortArray {
             int k = 0;
 
             // Merge left and right arrays
-            while(i < left.length && j < right.length) {
-                if(left[i] < right[j]) {
+            while (i < left.length && j < right.length) {
+                if (left[i] < right[j]) {
                     nums[k++] = left[i++];
                 } else {
                     nums[k++] = right[j++];
@@ -41,11 +92,11 @@ public class SortArray {
             }
 
             // Collect remaining elements
-            while(i < left.length) {
+            while (i < left.length) {
                 nums[k++] = left[i++];
             }
 
-            while(j < right.length) {
+            while (j < right.length) {
                 nums[k++] = right[j++];
             }
         }
@@ -89,7 +140,7 @@ public class SortArray {
 
         int[] arr = {3, 4, 2, 8, 5};
 
-        System.out.println(Arrays.toString(sortArray.sortArray(arr)));
+        System.out.println(sortArray.sortArray(arr));
     }
 }
 
