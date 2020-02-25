@@ -18,8 +18,8 @@ public class Combinations {
         for (int i = first; i < n + 1; ++i) {
             // add i into the current combination
             curr.add(i);
-            curr.forEach(System.out::print);
-            System.out.println();
+//            curr.forEach(System.out::print);
+//            System.out.println();
             // use next integers to complete the combination
             backtrack(i + 1, curr);
             // backtrack
