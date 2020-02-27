@@ -1,6 +1,4 @@
-package problems.leetcode.interviewCollection;
-
-import sun.dc.pr.PRError;
+package problems.leetcode.interviewCollection.array;
 
 import java.util.Arrays;
 

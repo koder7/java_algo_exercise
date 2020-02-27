@@ -1,4 +1,4 @@
-package problems.leetcode.interviewCollection;
+package problems.leetcode.interviewCollection.array;
 
 import java.util.Arrays;
 
