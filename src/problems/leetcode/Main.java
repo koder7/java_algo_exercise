@@ -1,5 +1,9 @@
 package problems.leetcode;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -20,20 +24,26 @@ public class Main {
     }
 
     private static void TestAddTwoNumbers() {
-        ListNode l1 = new ListNode(1);
-        ListNode l2 = new ListNode(2);
-        ListNode l3 = new ListNode(3);
+//        ListNode l1 = new ListNode(1);
+//        ListNode l2 = new ListNode(2);
+//        ListNode l3 = new ListNode(3);
+//
+//        ListNode l4 = new ListNode(9);
+//        ListNode l5 = new ListNode(1);
+//
+//        l1.next = l2;
+//        l2.next = l3;
+//
+//        AddTwoNumbers solution = new AddTwoNumbers();
+//
+//        ListNode node = solution.addTwoNumbers(l4, l5);
+//        solution.printNode(node);
 
-        ListNode l4 = new ListNode(9);
-        ListNode l5 = new ListNode(1);
 
-        l1.next = l2;
-        l2.next = l3;
+        ZoneId z = ZoneId.of("America/Chicago");
+        LocalDateTime localDateTime = LocalDateTime.now().plusDays(1);
+        ZonedDateTime zdt = ZonedDateTime.ofLocal(localDateTime, z, null);
 
-        AddTwoNumbers solution = new AddTwoNumbers();
-
-        ListNode node = solution.addTwoNumbers(l4, l5);
-        solution.printNode(node);
 
         /* This code fails if the numbers are out of java int range.
             Better solution is add numbers like you do on paper
